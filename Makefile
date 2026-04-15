@@ -21,7 +21,8 @@ IVOA_GROUP = DAL
 
 # Source files for the TeX document (but the main file must always
 # be called $(DOCNAME).tex
-SOURCES = $(DOCNAME).tex ivoa-cite.tex role_diagram.pdf
+ROLE_DIAGRAM = role_diagram
+SOURCES = $(DOCNAME).tex ivoa-cite.tex $(ROLE_DIAGRAM).pdf
 
 # List of pixel image files to be included in submitted package
 FIGURES = role_diagram.svg
@@ -29,7 +30,11 @@ FIGURES = role_diagram.svg
 # List of PDF figures (for vector graphics)
 VECTORFIGURES =
 
-include ivoatex/Makefile
+# Additional files to distribute (e.g., CSS, schema files, examples...)
+BNF = bnf/adql-bnf
+AUX_FILES = $(BNF).txt $(BNF).html
+
+-include ivoatex/Makefile
 
 # Shortcut aliases
 pdf: $(DOCNAME).pdf
@@ -40,7 +45,7 @@ html: $(DOCNAME).html
 
 zip: package
 
-bnf: adql-bnf.html
+bnf: $(BNF).html
 
 # Custom target for generating a hyperlinked HTML version of the BNF.
 # This is not currently run by default during the build.
@@ -49,12 +54,17 @@ BNFHTML_INTRO = \
    <a href='\#query_specification'>\&lt;query_specification\&gt;</a>. \
    </p>
    
-adql-bnf.html: adql.bnf
+$(BNF).html: $(BNF).txt
 	@( echo "ADQL ${DOCVERSION}"; cat $< ) \
-        | perl bnf2html.pl \
+        | perl bnf/bnf2html.pl \
         | sed -e's/#xref-  */#xref-/g' \
               -e's/href="#  */href="#/g' \
               -e's/name="  */name="/g' \
               -e's/&lt;  */\&lt;/g' \
         | sed -e"s%</h1>%</h1>\n$(BNFHTML_INTRO)%" \
         > $@ && echo "=> HTML version of BNF successfully generated in: $@"
+
+clean-all: clean
+	rm -f $(DOCNAME)-draft.pdf
+	rm -f $(ROLE_DIAGRAM).pdf $(ROLE_DIAGRAM).svg
+	rm -f $(BNF).html
