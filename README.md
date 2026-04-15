@@ -1,4 +1,4 @@
-![ADQL version](https://img.shields.io/badge/ADQL-REC--2.1-green.svg)
+![ADQL version](https://img.shields.io/badge/ADQL-WD--2.2-lightgrey.svg)
 [![CI build of the ADQL standard](../../actions/workflows/build.yml/badge.svg)](../../actions/workflows/build.yml)
 [![PDF-Preview](https://img.shields.io/badge/Preview-PDF-blue)](../../releases/download/auto-pdf-preview/ADQL-draft.pdf)
 
