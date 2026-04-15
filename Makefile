@@ -4,13 +4,13 @@
 DOCNAME = ADQL
 
 # count up; you probably do not want to bother with versions <1.0
-DOCVERSION = 2.1
+DOCVERSION = 2.2
 
 # Publication date, ISO format; update manually for "releases"
-DOCDATE = 2023-11-07
+DOCDATE = 2026-04-15
 
 # What is it you're writing: NOTE, WD, PR, or REC
-DOCTYPE = PR
+DOCTYPE = WD
 
 # IVOA group submitting this document
 IVOA_GROUP = DAL
