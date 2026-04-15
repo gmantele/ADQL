@@ -13,3 +13,5 @@ ivoatexmeta.tex
 *.zip
 *.code-workspace
 NOTES/
+role_diagram.svg
+role_diagram.pdf
