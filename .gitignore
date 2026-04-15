@@ -10,3 +10,6 @@ ivoatexmeta.tex
 *.blg
 *.fdb_latexmk
 *.fls
+*.zip
+*.code-workspace
+NOTES/
