@@ -36,9 +36,8 @@
 \author{Alexander Szalay}
 
 \editor[http://wiki.ivoa.net/twiki/bin/view/IVOA/GregoryMantelet]{Grégory Mantelet}
-\editor[http://wiki.ivoa.net/twiki/bin/view/IVOA/DaveMorris]{Dave Morris}
 
-\previousversion[http://www.ivoa.net/Documents/ADQL/2.0]{ADQL-2.0}
+\previousversion[https://www.ivoa.net/Documents/ADQL/20231215/]{ADQL-2.1}
 
 \begin{document}
 
@@ -597,74 +596,83 @@ case-insensitive string comparison operator, defined in \SectionRef{sec:string.f
 
 ADQL declares a list of reserved keywords \SectionSee{sec:keywords} which include
 the mathematical and trigonometrical function names. Their syntax,
-usage and description are detailed in tables~\ref{table:math.functions}
-and \ref{table:trig.functions}.
+usage and description are detailed in below.
 
-\begin{table}[tpb]\footnotesize
-    \begin{tabular}{|p{0.20\textwidth}|p{0.125\textwidth}|p{0.125\textwidth}|p{0.55\textwidth}|}
+\subsubsection{Mathematical Functions}
 
-        \hline
-        \textbf{Name} &
-        \textbf{Argument \newline datatype} &
-        \textbf{Return \newline datatype} &
-        \textbf{Description}
-        \tabularnewline
+\begin{itemize}
 
-        \hline
-        abs(x) &
-        \textit{x} double &
-        double &
-        Returns the absolute value of \textit{x}.
-        \tabularnewline
+    \item \textbf{abs(x)}
+        Returns the absolute value of x.
+        \begin{description}
+            \item[Arguments]:
+                \begin{description}
+                    \item[x] double
+                \end{description}
+            \item[Return datatype] double
+        \end{description}
 
-        \hline
-        ceiling(x) &
-        \textit{x} double &
-        double &
+    \item \textbf{ceiling(x)}
         Returns the smallest integer that is not less than \textit{x}.
-        \tabularnewline
+        \begin{description}
+            \item[Arguments]:
+                \begin{description}
+                    \item[x] double
+                \end{description}
+            \item[Return datatype] double
+        \end{description}
 
-        \hline
-        degrees(x) &
-        \textit{x} double &
-        double &
+    \item \textbf{degrees(x)}
         Converts the angle \textit{x} from radians to degrees.
-        \tabularnewline
+        \begin{description}
+            \item[Arguments]:
+                \begin{description}
+                    \item[x] double
+                \end{description}
+            \item[Return datatype] double
+        \end{description}
 
-        \hline
-        exp(x) &
-        \textit{x} double &
-        double &
+    \item \textbf{exp(x)}
         Returns Euler’s number \textit{e} raised to the power of \textit{x}.
-        \tabularnewline
+        \begin{description}
+            \item[Arguments]:
+                \begin{description}
+                    \item[x] double
+                \end{description}
+            \item[Return datatype] double
+        \end{description}
 
-        \hline
-        floor(x) &
-        \textit{x} double &
-        double &
+    \item \textbf{floor(x)}
         Returns the largest integer that is not greater than \textit{x}.
-        \tabularnewline
+        \begin{description}
+            \item[Arguments]:
+                \begin{description}
+                    \item[x] double
+                \end{description}
+            \item[Return datatype] double
+        \end{description}
 
-        \hline
-        log(x) &
-        \textit{x} double &
-        double &
+    \item \textbf{log(x)}
         Returns the natural logarithm (base \textit{e}) of \textit{x}. The value of \textit{x} must be greater than zero.
-        \tabularnewline
+        \begin{description}
+            \item[Arguments]:
+                \begin{description}
+                    \item[x] double
+                \end{description}
+            \item[Return datatype] double
+        \end{description}
 
-        \hline
-        log10(x) &
-        \textit{x} double &
-        double &
+    \item \textbf{log10(x)}
         Returns the base 10 logarithm of \textit{x}. The value of \textit{x} must be greater than zero.
-        \tabularnewline
+        \begin{description}
+            \item[Arguments]:
+                \begin{description}
+                    \item[x] double
+                \end{description}
+            \item[Return datatype] double
+        \end{description}
 
-        \hline
-        mod(x,y) &
-        \textit{x} double,
-        \newline
-        \textit{y} double &
-        double &
+    \item \textbf{mod(x,y)}
         Returns the remainder \textit{r} of \textit{x/y} as a double,
         where:
         \begin{itemize}
@@ -672,138 +680,176 @@ and \ref{table:trig.functions}.
             \item |\textit{r}| is less than |\textit{y}|
             \item \textit{x} = (\textit{f} * \textit{y}) + \textit{r} for a given integer \textit{f}
         \end{itemize}
-        \tabularnewline
+        \begin{description}
+            \item[Arguments]:
+                \begin{description}
+                    \item[x] double
+                    \item[y] double
+                \end{description}
+            \item[Return datatype] double
+        \end{description}
 
-        \hline
-        pi() &
-        &
-        double &
+    \item \textbf{pi()}
         The numeric constant \(\pi\).
-        \tabularnewline
+        \begin{description}
+            \item[Return datatype] double
+        \end{description}
 
-        \hline
-        power(x,y) &
-        \textit{x} double,
-        \newline
-        \textit{y} double &
-        double &
+    \item \textbf{power(x,y)}
         Returns the value of \textit{x} raised to the power of \textit{y}.
-        \tabularnewline
+        \begin{description}
+            \item[Arguments]:
+                \begin{description}
+                    \item[x] double
+                    \item[y] double
+                \end{description}
+            \item[Return datatype] double
+        \end{description}
 
-        \hline
-        radians(x) &
-        \textit{x} double &
-        double &
+    \item \textbf{radians(x)}
         Converts the angle \textit{x} from degrees to radians.
-        \tabularnewline
+        \begin{description}
+            \item[Arguments]:
+                \begin{description}
+                    \item[x] double
+                \end{description}
+            \item[Return datatype] double
+        \end{description}
 
-        \hline
-        sqrt(x) &
-        \textit{x} double &
-        double &
+    \item \textbf{sqrt(x)}
         Returns the positive square root of \textit{x}.
-        \tabularnewline
+        \begin{description}
+            \item[Arguments]:
+                \begin{description}
+                    \item[x] double
+                \end{description}
+            \item[Return datatype] double
+        \end{description}
 
-        \hline
-        rand(x) &
-        \textit{x} double &
-        double &
+    \item \textbf{rand(x)}
         Returns a random value between 0.0 and 1.0.
-        The optional argument, \textit{x}, originally intended to provide a random seed,
-        has undefined semantics. Query writers are advised to omit this argument.
-        \tabularnewline
+        The optional argument, \textit{x}, originally intended to provide a
+        random seed, has undefined semantics. Query writers are advised to omit
+        this argument.
+        \begin{description}
+            \item[Arguments]:
+                \begin{description}
+                    \item[x] double \textit{(optional)}
+                \end{description}
+            \item[Return datatype] double
+        \end{description}
 
-        \hline
-        round(x,n) &
-        \textit{x} double,
-        \newline
-        \textit{n} integer &
-        double &
+    \item \textbf{round(x,n)}
         Rounds \textit{x} to \textit{n} decimal places.
         The integer \textit{n} is optional and defaults to 0 if not specified.
-        A negative value of \textit{n} will round to the left of the decimal point.
-        \tabularnewline
+        A negative value of \textit{n} will round to the left of the decimal
+        point.
+        \begin{description}
+            \item[Arguments]:
+                \begin{description}
+                    \item[x] double
+                    \item[n] integer \textit{(optional ; default: 0)}
+                \end{description}
+            \item[Return datatype] double
+        \end{description}
 
-        \hline
-        truncate(x, n) &
-        \textit{x} double
-        \newline
-        \textit{n} integer &
-        double &
+    \item \textbf{truncate(x,n)}
         Truncates \textit{x} to \textit{n} decimal places.
         The integer \textit{n} is optional and defaults to 0 if not specified.
-        \tabularnewline
-        \hline
-    \end{tabular}
-    \caption{Mathematical functions}
-    \label{table:math.functions}
-\end{table}
+        \begin{description}
+            \item[Arguments]:
+                \begin{description}
+                    \item[x] double
+                    \item[n] integer \textit{(optional ; default: 0)}
+                \end{description}
+            \item[Return datatype] double
+        \end{description}
+\end{itemize}
 
-\begin{table}[tbh]\footnotesize
-    \begin{tabular}{|p{0.20\textwidth}|p{0.125\textwidth}|p{0.125\textwidth}|p{0.55\textwidth}|}
+\subsubsection{Trigonometrical Functions}
 
-        \hline
-        \textbf{Name} &
-        \textbf{Argument \newline datatype} &
-        \textbf{Return \newline datatype} &
-        \textbf{Description}
-        \tabularnewline
+\begin{itemize}
 
-        \hline
-        acos(x) &
-        \textit{x} double &
-        double &
-        Returns the arc cosine of \textit{x}, in the range of 0 through \(\pi\) radians. The absolute value of \textit{x} must be less than or equal to 1.0.
-        \tabularnewline
+    \item \textbf{acos(x)}
+        Returns the arc cosine of \textit{x}, in the range of 0 through
+        \(\pi\) radians. The absolute value of \textit{x} must be less than or
+        equal to 1.0.
+        \begin{description}
+            \item[Arguments]:
+                \begin{description}
+                    \item[x] double
+                \end{description}
+            \item[Return datatype] double
+        \end{description}
 
-        \hline
-        asin(x) &
-        \textit{x} double &
-        double &
-        Returns the arc sine of \textit{x}, in the range of -\(\pi\)/2 through \(\pi\)/2 radians. The absolute value of \textit{x} must be less than or equal to 1.0.
-        \tabularnewline
+    \item \textbf{asin(x)}
+        Returns the arc sine of \textit{x}, in the range of -\(\pi\)/2 through
+        \(\pi\)/2 radians. The absolute value of \textit{x} must be less than or
+        equal to 1.0.
+        \begin{description}
+            \item[Arguments]:
+                \begin{description}
+                    \item[x] double
+                \end{description}
+            \item[Return datatype] double
+        \end{description}
 
-        \hline
-        atan(x) &
-        \textit{x} double &
-        double &
-        Returns the arc tangent of \textit{x} , in the range of -\(\pi\)/2 through \(\pi\)/2 radians.
-        \tabularnewline
+    \item \textbf{atan(x)}
+        Returns the arc tangent of \textit{x} , in the range of -\(\pi\)/2
+        through \(\pi\)/2 radians.
+        \begin{description}
+            \item[Arguments]:
+                \begin{description}
+                    \item[x] double
+                \end{description}
+            \item[Return datatype] double
+        \end{description}
 
-        \hline
-        atan2(y,x) &
-        \textit{x} double,
-        \newline
-        \textit{y} double &
-        double &
-        Converts rectangular coordinates \textit{x,y} to polar angle. It computes the arc tangent of \textit{y/x} in the range of –\(\pi\) through \(\pi\) radians.
-        \tabularnewline
+    \item \textbf{atan2(x,y)}
+        Converts rectangular coordinates \textit{x,y} to polar angle. It
+        computes the arc tangent of \textit{y/x} in the range of –\(\pi\)
+        through \(\pi\) radians.
+        \begin{description}
+            \item[Arguments]:
+                \begin{description}
+                    \item[x] double
+                    \item[y] double
+                \end{description}
+            \item[Return datatype] double
+        \end{description}
 
-        \hline
-        cos(x) &
-        \textit{x} double &
-        double &
-        Returns the cosine of the angle \textit{x} in radians, in the range of -1.0 through 1.0.
-        \tabularnewline
+    \item \textbf{cos(x)}
+        Returns the cosine of the angle \textit{x} in radians, in the range of
+        -1.0 through 1.0.
+        \begin{description}
+            \item[Arguments]:
+                \begin{description}
+                    \item[x] double
+                \end{description}
+            \item[Return datatype] double
+        \end{description}
 
-        \hline
-        sin(x) &
-        \textit{x} double &
-        double &
-        Returns the sine of the angle \textit{x} in radians, in the range of -1.0 through 1.0.
-        \tabularnewline
+    \item \textbf{sin(x)}
+        Returns the sine of the angle \textit{x} in radians, in the range of
+        -1.0 through 1.0.
+        \begin{description}
+            \item[Arguments]:
+                \begin{description}
+                    \item[x] double
+                \end{description}
+            \item[Return datatype] double
+        \end{description}
 
-        \hline
-        tan(x) &
-        \textit{x} double &
-        double &
+    \item \textbf{tan(x)}
         Returns the tangent of the angle \textit{x} in radians.
-        \tabularnewline
-        \hline
-    \end{tabular}
-    \caption{Trigonometrical functions}
-    \label{table:trig.functions}
-\end{table}
+        \begin{description}
+            \item[Arguments]:
+                \begin{description}
+                    \item[x] double
+                \end{description}
+            \item[Return datatype] double
+        \end{description}
+\end{itemize}
 
 \section{Type system}
 \label{sec:types}
