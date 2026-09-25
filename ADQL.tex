@@ -14,6 +14,10 @@
 
 \usepackage{hyperref}
 
+% Redefine description blocks so that the definition is always on a new line instead of being just after the label:
+\usepackage{enumitem} \SetLabelAlign{parleft}{\parbox[t]\textwidth{#1}}
+\setdescription{ align=parleft, style=nextline }
+
 % Macros for referring to IVOA standards and notes.
 \input{ivoa-cite.tex}
 
@@ -600,256 +604,121 @@ usage and description are detailed in below.
 
 \subsubsection{Mathematical Functions}
 
-\begin{itemize}
-
-    \item \textbf{abs(x)}
-        Returns the absolute value of x.
-        \begin{description}
-            \item[Arguments:]\mbox{}
-                \begin{description}
-                    \item[x] double
-                \end{description}
-            \item[Return datatype] double
-        \end{description}
-
-    \item \textbf{ceiling(x)}
-        Returns the smallest integer that is not less than \textit{x}.
-        \begin{description}
-            \item[Arguments:]\mbox{}
-                \begin{description}
-                    \item[x] double
-                \end{description}
-            \item[Return datatype] double
-        \end{description}
-
-    \item \textbf{degrees(x)}
-        Converts the angle \textit{x} from radians to degrees.
-        \begin{description}
-            \item[Arguments:]\mbox{}
-                \begin{description}
-                    \item[x] double
-                \end{description}
-            \item[Return datatype] double
-        \end{description}
-
-    \item \textbf{exp(x)}
-        Returns Euler’s number \textit{e} raised to the power of \textit{x}.
-        \begin{description}
-            \item[Arguments:]\mbox{}
-                \begin{description}
-                    \item[x] double
-                \end{description}
-            \item[Return datatype] double
-        \end{description}
-
-    \item \textbf{floor(x)}
-        Returns the largest integer that is not greater than \textit{x}.
-        \begin{description}
-            \item[Arguments:]\mbox{}
-                \begin{description}
-                    \item[x] double
-                \end{description}
-            \item[Return datatype] double
-        \end{description}
-
-    \item \textbf{log(x)}
-        Returns the natural logarithm (base \textit{e}) of \textit{x}. The value of \textit{x} must be greater than zero.
-        \begin{description}
-            \item[Arguments:]\mbox{}
-                \begin{description}
-                    \item[x] double
-                \end{description}
-            \item[Return datatype] double
-        \end{description}
-
-    \item \textbf{log10(x)}
-        Returns the base 10 logarithm of \textit{x}. The value of \textit{x} must be greater than zero.
-        \begin{description}
-            \item[Arguments:]\mbox{}
-                \begin{description}
-                    \item[x] double
-                \end{description}
-            \item[Return datatype] double
-        \end{description}
-
-    \item \textbf{mod(x,y)}
-        Returns the remainder \textit{r} of \textit{x/y} as a double,
-        where:
-        \begin{itemize}
-            \item \textit{r} has the same sign as \textit{x}
+\begin{description}
+    \item[\texttt{abs(x)}]
+    \texttt{double abs(double x)} \\
+    Returns the absolute value of x.
+    
+    \item[\texttt{ceiling(x)}]
+    \texttt{double ceiling(double x)} \\
+    Returns the smallest integer that is not less than \textit{x}.
+    
+    \item[\texttt{degrees(x)}]
+    \texttt{double degrees(double x)} \\
+    Converts the angle \textit{x} from radians to degrees.
+    
+    \item[\texttt{exp(x)}]
+    \texttt{double exp(double x)} \\
+    Returns Euler’s number \textit{e} raised to the power of \textit{x}.
+    
+    \item[\texttt{floor(x)}]
+    \texttt{double floor(double x)} \\
+    Returns the largest integer that is not greater than \textit{x}.
+    
+    \item[\texttt{log(x)}]
+    \texttt{double log(double x)} \\
+    Returns the natural logarithm (base \textit{e}) of \textit{x}. The value of \textit{x} must be greater than zero.
+    
+    \item[\texttt{log10(x)}]
+    \texttt{double log10(double x)} \\
+    Returns the base 10 logarithm of \textit{x}. The value of \textit{x} must be greater than zero.
+    
+    \item[\texttt{mod(x,y)}]
+    \texttt{double mod(double x, double y)} \\
+    Returns the remainder \textit{r} of \textit{x/y} as a double,
+    where:
+    \begin{itemize}
+        \item \textit{r} has the same sign as \textit{x}
             \item |\textit{r}| is less than |\textit{y}|
             \item \textit{x} = (\textit{f} * \textit{y}) + \textit{r} for a given integer \textit{f}
-        \end{itemize}
-        \begin{description}
-            \item[Arguments:]\mbox{}
-                \begin{description}
-                    \item[x] double
-                    \item[y] double
-                \end{description}
-            \item[Return datatype] double
-        \end{description}
-
-    \item \textbf{pi()}
-        The numeric constant \(\pi\).
-        \begin{description}
-            \item[Return datatype] double
-        \end{description}
-
-    \item \textbf{power(x,y)}
-        Returns the value of \textit{x} raised to the power of \textit{y}.
-        \begin{description}
-            \item[Arguments:]\mbox{}
-                \begin{description}
-                    \item[x] double
-                    \item[y] double
-                \end{description}
-            \item[Return datatype] double
-        \end{description}
-
-    \item \textbf{radians(x)}
-        Converts the angle \textit{x} from degrees to radians.
-        \begin{description}
-            \item[Arguments:]\mbox{}
-                \begin{description}
-                    \item[x] double
-                \end{description}
-            \item[Return datatype] double
-        \end{description}
-
-    \item \textbf{sqrt(x)}
-        Returns the positive square root of \textit{x}.
-        \begin{description}
-            \item[Arguments:]\mbox{}
-                \begin{description}
-                    \item[x] double
-                \end{description}
-            \item[Return datatype] double
-        \end{description}
-
-    \item \textbf{rand(x)}
-        Returns a random value between 0.0 and 1.0.
-        The optional argument, \textit{x}, originally intended to provide a
-        random seed, has undefined semantics. Query writers are advised to omit
-        this argument.
-        \begin{description}
-            \item[Arguments:]\mbox{}
-                \begin{description}
-                    \item[x] double \textit{(optional)}
-                \end{description}
-            \item[Return datatype] double
-        \end{description}
-
-    \item \textbf{round(x,n)}
-        Rounds \textit{x} to \textit{n} decimal places.
-        The integer \textit{n} is optional and defaults to 0 if not specified.
-        A negative value of \textit{n} will round to the left of the decimal
-        point.
-        \begin{description}
-            \item[Arguments:]\mbox{}
-                \begin{description}
-                    \item[x] double
-                    \item[n] integer \textit{(optional ; default: 0)}
-                \end{description}
-            \item[Return datatype] double
-        \end{description}
-
-    \item \textbf{truncate(x,n)}
-        Truncates \textit{x} to \textit{n} decimal places.
-        The integer \textit{n} is optional and defaults to 0 if not specified.
-        \begin{description}
-            \item[Arguments:]\mbox{}
-                \begin{description}
-                    \item[x] double
-                    \item[n] integer \textit{(optional ; default: 0)}
-                \end{description}
-            \item[Return datatype] double
-        \end{description}
-\end{itemize}
+    \end{itemize}
+    
+    \item[\texttt{pi()}]
+    \texttt{double pi()} \\
+    The numeric constant \(\pi\).
+    
+    \item[\texttt{power(x,y)}]
+    \texttt{double power(double x, double y)} \\
+    Returns the value of \textit{x} raised to the power of \textit{y}.
+    
+    \item[\texttt{radians(x)}]
+    \texttt{double radians(double x)} \\
+    Converts the angle \textit{x} from degrees to radians.
+    
+    \item[\texttt{sqrt(x)}]
+    \texttt{double sqrt(double x)} \\
+    Returns the positive square root of \textit{x}.
+    
+    \item[\texttt{rand(x)}]
+    \texttt{double rand(double x)} \\
+    Returns a random value between 0.0 and 1.0.
+    The optional argument, \textit{x}, originally intended to provide a
+    random seed, has undefined semantics. Query writers are advised to omit
+    this argument.
+    
+    \item[\texttt{round(x,n)}]
+    \texttt{double round(double x, integer n)} \\
+    Rounds \textit{x} to \textit{n} decimal places.
+    The integer \textit{n} is optional and defaults to 0 if not specified.
+    A negative value of \textit{n} will round to the left of the decimal
+    point.
+    
+    \item[\texttt{truncate(x, n)}]
+    \texttt{double truncate(double x, integer n)} \\
+    Truncates \textit{x} to \textit{n} decimal places.
+    The integer \textit{n} is optional and defaults to 0 if not specified.
+\end{description}
 
 \subsubsection{Trigonometrical Functions}
 
-\begin{itemize}
-
-    \item \textbf{acos(x)}
-        Returns the arc cosine of \textit{x}, in the range of 0 through
-        \(\pi\) radians. The absolute value of \textit{x} must be less than or
-        equal to 1.0.
-        \begin{description}
-            \item[Arguments:]\mbox{}
-                \begin{description}
-                    \item[x] double
-                \end{description}
-            \item[Return datatype] double
-        \end{description}
-
-    \item \textbf{asin(x)}
-        Returns the arc sine of \textit{x}, in the range of -\(\pi\)/2 through
-        \(\pi\)/2 radians. The absolute value of \textit{x} must be less than or
-        equal to 1.0.
-        \begin{description}
-            \item[Arguments:]\mbox{}
-                \begin{description}
-                    \item[x] double
-                \end{description}
-            \item[Return datatype] double
-        \end{description}
-
-    \item \textbf{atan(x)}
-        Returns the arc tangent of \textit{x} , in the range of -\(\pi\)/2
-        through \(\pi\)/2 radians.
-        \begin{description}
-            \item[Arguments:]\mbox{}
-                \begin{description}
-                    \item[x] double
-                \end{description}
-            \item[Return datatype] double
-        \end{description}
-
-    \item \textbf{atan2(x,y)}
-        Converts rectangular coordinates \textit{x,y} to polar angle. It
-        computes the arc tangent of \textit{y/x} in the range of –\(\pi\)
-        through \(\pi\) radians.
-        \begin{description}
-            \item[Arguments:]\mbox{}
-                \begin{description}
-                    \item[x] double
-                    \item[y] double
-                \end{description}
-            \item[Return datatype] double
-        \end{description}
-
-    \item \textbf{cos(x)}
-        Returns the cosine of the angle \textit{x} in radians, in the range of
-        -1.0 through 1.0.
-        \begin{description}
-            \item[Arguments:]\mbox{}
-                \begin{description}
-                    \item[x] double
-                \end{description}
-            \item[Return datatype] double
-        \end{description}
-
-    \item \textbf{sin(x)}
-        Returns the sine of the angle \textit{x} in radians, in the range of
-        -1.0 through 1.0.
-        \begin{description}
-            \item[Arguments:]\mbox{}
-                \begin{description}
-                    \item[x] double
-                \end{description}
-            \item[Return datatype] double
-        \end{description}
-
-    \item \textbf{tan(x)}
-        Returns the tangent of the angle \textit{x} in radians.
-        \begin{description}
-            \item[Arguments:]\mbox{}
-                \begin{description}
-                    \item[x] double
-                \end{description}
-            \item[Return datatype] double
-        \end{description}
-\end{itemize}
+\begin{description}
+    \item[\texttt{acos(x)}]
+    \texttt{double acos(double x)} \\
+    Returns the arc cosine of \textit{x}, in the range of 0 through
+    \(\pi\) radians. The absolute value of \textit{x} must be less than or
+    equal to 1.0.
+    
+    \item[\texttt{asin(x)}]
+    \texttt{double asin(double x)} \\
+    Returns the arc sine of \textit{x}, in the range of -\(\pi\)/2 through
+    \(\pi\)/2 radians. The absolute value of \textit{x} must be less than or
+    equal to 1.0.
+    
+    \item[\texttt{atan(x)}]
+    \texttt{double atan(double x)} \\
+    Returns the arc tangent of \textit{x} , in the range of -\(\pi\)/2
+    through \(\pi\)/2 radians.
+    
+    \item[\texttt{atan2(y,x)}]
+    \texttt{double atan2(double y, double x)} \\
+    Converts rectangular coordinates \textit{x,y} to polar angle. It
+    computes the arc tangent of \textit{y/x} in the range of –\(\pi\)
+    through \(\pi\) radians.
+    
+    \item[\texttt{cos(x)}]
+    \texttt{double cos(double x)} \\
+    Returns the cosine of the angle \textit{x} in radians, in the range of
+    -1.0 through 1.0.
+    
+    \item[\texttt{sin(x)}]
+    \texttt{double sin(double x)} \\
+    Returns the sine of the angle \textit{x} in radians, in the range of
+    -1.0 through 1.0.
+    
+    \item[\texttt{tan(x)}]
+    \texttt{double tan(double x)} \\
+    Returns the tangent of the angle \textit{x} in radians.
+\end{description}
 
 \section{Type system}
 \label{sec:types}
